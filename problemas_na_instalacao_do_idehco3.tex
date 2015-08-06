@@ -63,4 +63,12 @@ Para criar um usuário no postgres é necessário seguir a seguinte sequência d
 
 Observação: lembre-se sempre de por o ponto e vírgula no final dos comandos sql, pois o psql só reconhece o fim do comando quando encontra o ponto e vírgula.
 
+\subsection{Instalação do pip}
+O pip é usado para instalação de pacotes python.
+Para instalar o pip basta executar \verb|$ sudo apt-get install python-pip|.
+
+\subsection{Uso do virtualenv}
+Quando se está trabalhando com diferentes versões de um pacote python pode ser útil o uso do virtualenv.
+Para instalar o virtualenv basta executar \verb|$ sudo pip install virtualenv|.
+Para criar um ambiente virtual python é necessário executar o seguinte comando \verb|$ virtualenv nomeDoAmbiente|. Para entrar no ambiente virtual execute \verb|$ source nomeDoAmbiente/bin/activate|. A partir deste ponto qualuer pacote python que você instalar usando o comando pip será instalado nesse ambiente virtual.
 \end{document}
