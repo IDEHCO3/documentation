@@ -1,0 +1,66 @@
+\documentclass[12pt,a4paper]{article}
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{cmap}				% Mapear caracteres especiais no PDF
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos) cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage[fleqn]{amsmath}
+\usepackage{graphicx}			% Inclusão de gráficos
+\graphicspath{ {images/} }
+% ---
+
+\title{Problemas Frequentes na Instalação e execução dos projetos do IDEHCO3 e Lembretes}
+\author{Aluizio Lima Filho}
+
+\begin{document}
+	
+\maketitle
+
+\section{Problemas de instalação}
+
+\subsection{Erro na instalação do 'psycopg2'}
+Pode ocorrer durante a instalação do psycopg2 um erro de compilção relacionado ao \verb|#include <Python.h>|, isso ocorre devido a falta do pacote python-dev.
+Para solucionar este problema basta instalar o pacote python-dev,
+para realizar tal tarefa basta executar o comando abaixo:
+\begin{verbatim}
+	$ sudo apt-get install python-dev
+\end{verbatim}
+
+
+\section{Problemas de execução}
+
+\subsection{Erro ao executar o comando syncdb relacionado ao auth\_user}
+Isso ocorre os o syncdb não consegue criar no banco a tabela dos usuários do django. Dessa forma podemos resolver isso com os dois comandos abaixo:
+
+\begin{verbatim}
+	$ python manage.py migrate auth
+	$ python manage.py migrate
+\end{verbatim}
+
+\section{Lembretes}
+
+\subsection{Criação de um usuário no postgres}
+Para criar um usuário no postgres é necessário seguir a seguinte sequência de passos:
+
+\begin{enumerate}
+	\item primeiro abrimos o terminal do linux.
+	\item agora executamos o comando \verb|$ sudo su postgres| para mudar o usuário no terminal para postgres.
+	\item em seguida executamos o comando \verb|$ psql| para entrar no programa responsável por executar commandos sql.
+	\item e por último executamos o seguinte comando sql:
+		\begin{verbatim}
+			$ CREATE ROLE nomeDoUsuario 
+			WITH SUPERUSER CREATEROLE CREATEDB LOGIN PASSWORD 'senha';
+		\end{verbatim}
+\end{enumerate}
+
+Observação: lembre-se sempre de por o ponto e vírgula no final dos comandos sql, pois o psql só reconhece o fim do comando quando encontra o ponto e vírgula.
+
+\end{document}
