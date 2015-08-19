@@ -37,13 +37,16 @@ para realizar tal tarefa basta executar o comando abaixo:
 
 \section{Problemas de execução}
 
-\subsection{Erro ao executar o comando syncdb relacionado ao auth\_user}
+\subsection{Erro ao executar o comando syncdb ou o comando migrate relacionado ao auth\_user}
 Isso ocorre os o syncdb não consegue criar no banco a tabela dos usuários do django. Dessa forma podemos resolver isso com os dois comandos abaixo:
 
 \begin{verbatim}
 	$ python manage.py migrate auth
 	$ python manage.py migrate
 \end{verbatim}
+
+\subsection{Erro ao executar o comando migrate e as tabelas não são criadas}
+Isso pode ocorrer devido a pasta migrations que é criada pelo django dentro de cada aplicação, essa pasta de alguma forma inpede a criação das tabelas. Para resolver o problema basta excluir a pasta e executar o comando migrate novamente.
 
 \section{Lembretes}
 
